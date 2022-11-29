@@ -60,19 +60,19 @@ namespace WebCore5ApiLab1.Services
         }
 
         /// <summary>
-        /// generate the Jwt Token.
+        /// 產生 Jwt Token.
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
         private string generateJwtToken(User user)
         {
-            // generate token that is valid for 7 days
+            // 產生一個期限只有 【appSettings/TimeoutMinutes】所設定之時間（分鐘）
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(_appSettings.TimeoutMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

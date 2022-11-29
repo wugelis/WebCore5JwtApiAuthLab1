@@ -8,5 +8,7 @@ namespace WebCore5ApiLab1.Configuration
     public class AppSettings
     {
         public string Secret { get; set; }
+
+        public double TimeoutMinutes { get; set; }
     }
 }

@@ -70,7 +70,8 @@ namespace WebCore5ApiLab1
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            app.UseMiddleware<JwtMiddleware>();
+            //app.UseMiddleware<JwtMiddleware>();
+            app.UseJwtAuthenticate();
 
             app.UseAuthorization();
 
