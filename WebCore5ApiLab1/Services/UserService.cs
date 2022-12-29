@@ -19,7 +19,7 @@ namespace WebCore5ApiLab1.Services
         {
             new User 
             { 
-                Id = 1, 
+                Id = 0, 
                 FirstName = "Gelis", 
                 LastName = "Wu", 
                 Username = "gelis", 
