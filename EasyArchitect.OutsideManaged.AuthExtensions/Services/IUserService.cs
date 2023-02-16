@@ -1,11 +1,10 @@
-﻿using System;
+﻿using EasyArchitect.OutsideManaged.AuthExtensions.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebCore5ApiLab1.Dto;
-using WebCore5ApiLab1.Models;
 
-namespace WebCore5ApiLab1.Services
+namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 {
     /// <summary>
     /// 

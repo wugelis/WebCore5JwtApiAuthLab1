@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EasyArchitect.OutsideManaged.AuthExtensions.Services;
+using EasyArchitect.OutsideManaged.Configuration;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -7,10 +9,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebCore5ApiLab1.Configuration;
-using WebCore5ApiLab1.Services;
 
-namespace WebCore5ApiLab1.Middleware
+namespace EasyArchitect.OutsideManaged.JWTAuthMiddlewares
 {
     public class JwtMiddleware
     {

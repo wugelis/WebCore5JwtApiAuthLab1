@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCore5ApiLab1", "WebCore5ApiLab1\WebCore5ApiLab1.csproj", "{151FD67C-C499-4AC3-AE90-25D93BDB1C97}"
 EndProject
@@ -9,6 +9,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomExtensions", "CustomExtensions", "{5C3C2BAE-E34A-4866-A5E9-942107642C5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideApiControllerBase", "EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj", "{8138D3DB-F05D-4912-8193-6538013C6DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.AuthExtensions", "EasyArchitect.OutsideManaged.AuthExtensions\EasyArchitect.OutsideManaged.AuthExtensions.csproj", "{B49C6F94-A1AC-446B-892D-3156D7DF8C33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.JWTAuthMiddlewares", "EasyArchitect.OutsideManaged.JWTAuthMiddlewares\EasyArchitect.OutsideManaged.JWTAuthMiddlewares.csproj", "{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.Configuration", "EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj", "{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +30,31 @@ Global
 		{151FD67C-C499-4AC3-AE90-25D93BDB1C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{151FD67C-C499-4AC3-AE90-25D93BDB1C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{151FD67C-C499-4AC3-AE90-25D93BDB1C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8138D3DB-F05D-4912-8193-6538013C6DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8138D3DB-F05D-4912-8193-6538013C6DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8138D3DB-F05D-4912-8193-6538013C6DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8138D3DB-F05D-4912-8193-6538013C6DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49C6F94-A1AC-446B-892D-3156D7DF8C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49C6F94-A1AC-446B-892D-3156D7DF8C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49C6F94-A1AC-446B-892D-3156D7DF8C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49C6F94-A1AC-446B-892D-3156D7DF8C33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8138D3DB-F05D-4912-8193-6538013C6DD2} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
+		{B49C6F94-A1AC-446B-892D-3156D7DF8C33} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
+		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
+		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {671F45AD-8F89-481F-9C19-CC493D1D0DD2}

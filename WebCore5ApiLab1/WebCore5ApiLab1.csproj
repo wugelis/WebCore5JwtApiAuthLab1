@@ -5,9 +5,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Attributes\JwtAuthorizeAttribute.cs" />
+    <Compile Remove="Configuration\AppSettings.cs" />
+    <Compile Remove="Dto\User.cs" />
+    <Compile Remove="Middleware\CustomJWTAuthenticateMiddleware.cs" />
+    <Compile Remove="Middleware\JwtMiddleware.cs" />
+    <Compile Remove="Models\AuthenticateRequest.cs" />
+    <Compile Remove="Models\AuthenticateResponse.cs" />
+    <Compile Remove="Services\IUserService.cs" />
+    <Compile Remove="Services\UserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyArchitect.OutsideApiControllerBase" Version="1.0.0" />
+    <PackageReference Include="EasyArchitect.OutsideManaged.JWTAuthMiddlewares" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
