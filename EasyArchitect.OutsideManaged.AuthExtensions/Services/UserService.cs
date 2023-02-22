@@ -14,29 +14,44 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 {
     public class UserService : IUserService
     {
-        private List<User> _users = new List<User>
-        {
-            new User 
-            { 
-                Id = 0, 
-                FirstName = "Gelis", 
-                LastName = "Wu", 
-                Username = "gelis", 
-                Password = "123456" 
-            }
-        };
+        //private List<User> _users = new List<User>
+        //{
+        //    new User 
+        //    { 
+        //        Id = 0, 
+        //        FirstName = "Gelis", 
+        //        LastName = "Wu", 
+        //        Username = "gelis", 
+        //        Password = "123456" 
+        //    }
+        //};
 
         private readonly AppSettings _appSettings;
+        private readonly ModelContext _context;
 
         public UserService(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
+            //_context = context;
+        }
+
+        public UserService(AppSettings appSettings, ModelContext context)
+        {
+            _appSettings = appSettings;
+            _context = context;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _users
-                .SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = _context
+                .Accountvos
+                .Where(x => x.Userid == model.Username && x.Password == model.Password)
+                .Select(u => new User() 
+                { 
+                    Id = 1,
+                    Username = u.Userid
+                })
+                .FirstOrDefault();
 
             if (user == null)
             {
@@ -50,17 +65,32 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _users;
+            return _context
+                .Accountvos
+                .Select(x => new User() 
+                { 
+                    Username = x.Userid
+                });
         }
 
-        public User GetById(int id)
-        {
-            return _users.FirstOrDefault(x => x.Id == id);
-        }
+        //public User GetById(int id)
+        //{
+        //    return _context
+        //        .Accountvos.FirstOrDefault(x => x.Userid == id);
+        //}
 
         public User GetByUsername(string username)
         {
-            return _users.Where(c => c.Username == username).FirstOrDefault();
+#pragma warning disable CS8603 // 可能有 Null 參考傳回。
+            return _context
+                .Accountvos
+                .Where(c => c.Userid== username)
+                .Select(x => new User()
+                {
+                    Username = x.Userid
+                })
+                .FirstOrDefault();
+#pragma warning restore CS8603 // 可能有 Null 參考傳回。
         }
 
         /// <summary>

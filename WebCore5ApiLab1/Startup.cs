@@ -1,3 +1,4 @@
+using EasyArchitect.OutsideManaged.AuthExtensions.Models;
 using EasyArchitect.OutsideManaged.AuthExtensions.Services;
 using EasyArchitect.OutsideManaged.Configuration;
 using EasyArchitect.OutsideManaged.JWTAuthMiddlewares;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,9 +45,23 @@ namespace WebCore5ApiLab1
             });
 
             // 註冊 AppSettings Configuration 類型，可在類別中注入 IOptions<AppSettings>
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            IConfigurationSection appSettingRoot = Configuration.GetSection("AppSettings");
 
-            services.AddScoped<IUserService, UserService>();
+            services.Configure<AppSettings>(appSettingRoot);
+
+            services.AddDbContext<ModelContext>(options => options.UseOracle(Configuration.GetConnectionString("OutsideDbContext")));
+
+            services.AddScoped<ModelContext>();
+
+            //services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IUserService, UserService>(x => new UserService(
+                new AppSettings() 
+                { 
+                    Secret = appSettingRoot.GetSection("Secret").Value,
+                    TimeoutMinutes = Convert.ToInt32(appSettingRoot.GetSection("TimeoutMinutes").Value)
+                }, x.GetRequiredService<ModelContext>()));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

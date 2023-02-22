@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyArchitect.OutsideManaged.AuthExtensions" Version="1.0.0" />
-    <PackageReference Include="EasyArchitect.OutsideManaged.Configuration" Version="1.0.0" />
+    <ProjectReference Include="..\EasyArchitect.OutsideManaged.AuthExtensions\EasyArchitect.OutsideManaged.AuthExtensions.csproj" />
+    <ProjectReference Include="..\EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj" />
   </ItemGroup>
 
 </Project>

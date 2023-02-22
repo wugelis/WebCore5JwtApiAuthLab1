@@ -13,7 +13,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
-        User GetById(int id);
+        //User GetById(int id);
         User GetByUsername(string username);
     }
 }

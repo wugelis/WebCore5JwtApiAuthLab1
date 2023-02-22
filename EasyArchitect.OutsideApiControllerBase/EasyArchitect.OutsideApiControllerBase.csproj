@@ -8,7 +8,7 @@
 	  <Authors>Gelis</Authors>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="EasyArchitect.OutsideManaged.AuthExtensions" Version="1.0.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyArchitect.OutsideManaged.AuthExtensions\EasyArchitect.OutsideManaged.AuthExtensions.csproj" />
+  </ItemGroup>
 </Project>
