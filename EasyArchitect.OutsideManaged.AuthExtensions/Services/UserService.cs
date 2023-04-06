@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -12,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 {
+    /// <summary>
+    /// 外部人員權限管理系統驗證服務
+    /// </summary>
     public class UserService : IUserService
     {
         //private List<User> _users = new List<User>
@@ -29,20 +33,38 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
         private readonly AppSettings _appSettings;
         private readonly ModelContext _context;
 
+#pragma warning disable CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
+        /// <summary>
+        /// 外部人員初始化
+        /// </summary>
+        /// <param name="appSettings"></param>
         public UserService(IOptions<AppSettings> appSettings)
+#pragma warning restore CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
         {
             _appSettings = appSettings.Value;
             //_context = context;
         }
 
+        /// <summary>
+        /// 外部人員初始化（包含 DbContext）
+        /// </summary>
+        /// <param name="appSettings">使用原生 AppSettings 物件</param>
+        /// <param name="context">DbContext 物件</param>
         public UserService(AppSettings appSettings, ModelContext context)
         {
             _appSettings = appSettings;
             _context = context;
         }
 
+        /// <summary>
+        /// 外部人員驗證方法
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
+            //throw new SyntaxErrorException("ORA-00933:SQL命令未正确结束。");
+
             var user = _context
                 .Accountvos
                 .Where(x => x.Userid == model.Username && x.Password == model.Password)
@@ -60,7 +82,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 
             var token = generateJwtToken(user);
 
-            return new AuthenticateResponse(user, token);
+            return new AuthenticateResponse(user, token); 
         }
 
         public IEnumerable<User> GetAll()
@@ -112,6 +134,5 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
     }
 }
