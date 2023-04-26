@@ -5,6 +5,7 @@ using EasyArchitect.OutsideManaged.AuthExtensions.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Mxic.FrameworkCore.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,11 +16,17 @@ namespace WebCore5ApiLab1.Controllers
     /// </summary>
     public class OutsideAPIController : OutsideBaseApiController
     {
+        private readonly IUriExtensions _uriExtensions;
+        private readonly IUserService _userService;
+
         public OutsideAPIController(
             ILogger<OutsideBaseApiController> logger, 
-            IUserService userService) 
+            IUserService userService,
+            IUriExtensions uriExtensions) 
             : base(logger, userService)
         {
+            _userService = userService;
+            _uriExtensions = uriExtensions;
         }
 
         /// <summary>
@@ -29,6 +36,8 @@ namespace WebCore5ApiLab1.Controllers
         [NeedAuthorize]
         [HttpGet]
         [APIName("GetPersons")]
+        [ApiLogException]
+        [ApiLogonInfoAttribute]
         public async Task<IEnumerable<Person>> GetPersons()
         {
             return await Task.FromResult(new Person[] 

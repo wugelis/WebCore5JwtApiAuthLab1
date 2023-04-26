@@ -18,20 +18,14 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
     /// </summary>
     public class UserService : IUserService
     {
-        //private List<User> _users = new List<User>
-        //{
-        //    new User 
-        //    { 
-        //        Id = 0, 
-        //        FirstName = "Gelis", 
-        //        LastName = "Wu", 
-        //        Username = "gelis", 
-        //        Password = "123456" 
-        //    }
-        //};
-
         private readonly AppSettings _appSettings;
         private readonly ModelContext _context;
+        private string _identityUser;
+
+        /// <summary>
+        /// 取得目前 Scoped 下的使用者
+        /// </summary>
+        public string IdentityUser { get => _identityUser; set => _identityUser = value; }
 
 #pragma warning disable CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
         /// <summary>
@@ -55,6 +49,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             _appSettings = appSettings;
             _context = context;
         }
+
 
         /// <summary>
         /// 外部人員驗證方法
@@ -81,6 +76,9 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             }
 
             var token = generateJwtToken(user);
+
+            // 若目前登入的使用者存在於系統中，將目前 User 名稱記錄在 IdentityUser 屬性中（此屬性只在目前 Scoped Lifecycle 中有效）
+            IdentityUser = model.Username;
 
             return new AuthenticateResponse(user, token); 
         }

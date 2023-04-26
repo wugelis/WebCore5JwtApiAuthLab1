@@ -1,4 +1,5 @@
-﻿using EasyArchitect.OutsideManaged.AuthExtensions.Models;
+﻿using EasyArchitect.OutsideManaged.AuthExtensions.Filters;
+using EasyArchitect.OutsideManaged.AuthExtensions.Models;
 using EasyArchitect.OutsideManaged.AuthExtensions.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,7 @@ namespace EasyArchitect.OutsideApiControllerBase
         /// <param name="authenticateModel"></param>
         /// <returns></returns>
         [HttpPost("Login")]
+        [ApiLogonInfo]
         public IActionResult Login(AuthenticateRequest authenticateModel)
         {
             var response = _userService.Authenticate(authenticateModel);

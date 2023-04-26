@@ -69,6 +69,9 @@ namespace EasyArchitect.OutsideManaged.JWTAuthMiddlewares
 
                 // 將原先用來產生 Claim 的欄位從 UserServices 裡撈出來，並塞入目前的工作階段身分物件裡
                 context.Items["User"] = userService.GetByUsername(userId);
+                //System.Security.Claims.ClaimsIdentity c = new System.Security.Claims.ClaimsIdentity(userId);
+                //System.Security.Claims.ClaimsPrincipal p = new System.Security.Claims.ClaimsPrincipal(jwtToken.);
+                userService.IdentityUser = userId;
             }
             catch
             {
