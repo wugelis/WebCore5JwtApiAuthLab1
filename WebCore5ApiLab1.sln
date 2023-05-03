@@ -12,13 +12,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomExtensions", "CustomExtensions", "{5C3C2BAE-E34A-4866-A5E9-942107642C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideApiControllerBase", "EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj", "{8138D3DB-F05D-4912-8193-6538013C6DD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideApiControllerBase", "EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj", "{8138D3DB-F05D-4912-8193-6538013C6DD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.AuthExtensions", "EasyArchitect.OutsideManaged.AuthExtensions\EasyArchitect.OutsideManaged.AuthExtensions.csproj", "{B49C6F94-A1AC-446B-892D-3156D7DF8C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideManaged.AuthExtensions", "EasyArchitect.OutsideManaged.AuthExtensions\EasyArchitect.OutsideManaged.AuthExtensions.csproj", "{B49C6F94-A1AC-446B-892D-3156D7DF8C33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.JWTAuthMiddlewares", "EasyArchitect.OutsideManaged.JWTAuthMiddlewares\EasyArchitect.OutsideManaged.JWTAuthMiddlewares.csproj", "{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideManaged.JWTAuthMiddlewares", "EasyArchitect.OutsideManaged.JWTAuthMiddlewares\EasyArchitect.OutsideManaged.JWTAuthMiddlewares.csproj", "{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.Configuration", "EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj", "{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideManaged.Configuration", "EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj", "{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{5D769E16-C55E-40A5-8361-6CC0F49EB443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.OutsideAccount", "OutsideManaged.OutsideAccount\OutsideManaged.OutsideAccount.csproj", "{D585899E-762D-4AC9-B3DE-889567493A7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{301075EA-1F6B-4EAF-801A-F5896ADEA7A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.OutsideAccountTests", "OutsideManaged.OutsideAccountTests\OutsideManaged.OutsideAccountTests.csproj", "{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +54,14 @@ Global
 		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D585899E-762D-4AC9-B3DE-889567493A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D585899E-762D-4AC9-B3DE-889567493A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D585899E-762D-4AC9-B3DE-889567493A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D585899E-762D-4AC9-B3DE-889567493A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +71,8 @@ Global
 		{B49C6F94-A1AC-446B-892D-3156D7DF8C33} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
+		{D585899E-762D-4AC9-B3DE-889567493A7A} = {5D769E16-C55E-40A5-8361-6CC0F49EB443}
+		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD} = {301075EA-1F6B-4EAF-801A-F5896ADEA7A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {671F45AD-8F89-481F-9C19-CC493D1D0DD2}

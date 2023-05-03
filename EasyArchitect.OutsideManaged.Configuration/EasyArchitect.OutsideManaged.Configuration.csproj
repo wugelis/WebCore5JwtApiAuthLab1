@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>Gelis</Company>
+    <Version>6.0.0</Version>
   </PropertyGroup>
 
 </Project>
