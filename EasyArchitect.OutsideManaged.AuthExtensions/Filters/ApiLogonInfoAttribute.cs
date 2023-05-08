@@ -58,7 +58,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Filters
             _uriExtensions = context.HttpContext.RequestServices.GetRequiredService<IUriExtensions>();
         }
         /// <summary>
-        /// 在 WEB API 的 ACTION 執行後被觸發.
+        /// 在 WEB API 的 ACTION 執行之後被觸發，代表 Web API Method 執行完畢，因此在這裡紀錄 Log 資訊，包括執行時間
         /// </summary>
         /// <param name="context"></param>
         public void OnActionExecuted(ActionExecutedContext context)

@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{30
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.OutsideAccountTests", "OutsideManaged.OutsideAccountTests\OutsideManaged.OutsideAccountTests.csproj", "{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{AAC0EEB7-2E8D-4B40-A1E1-557105ED548A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{151FD67C-C499-4AC3-AE90-25D93BDB1C97} = {AAC0EEB7-2E8D-4B40-A1E1-557105ED548A}
 		{8138D3DB-F05D-4912-8193-6538013C6DD2} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 		{B49C6F94-A1AC-446B-892D-3156D7DF8C33} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 		{CADE8CDF-CE6B-4E07-AF11-54C33A6F7BB8} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
