@@ -1,4 +1,6 @@
-﻿namespace OutsideManaged.OutsideAccount
+﻿using OutsideManaged.ViewObjects;
+
+namespace OutsideManaged.OutsideAccount
 {
     public interface IAccount
     {

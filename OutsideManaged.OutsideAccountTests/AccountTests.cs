@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OutsideManaged.OutsideAccount;
+using OutsideManaged.ViewObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

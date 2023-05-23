@@ -1,5 +1,6 @@
 ﻿using EasyArchitect.OutsideManaged.AuthExtensions.Models;
 using Microsoft.Extensions.DependencyInjection;
+using OutsideManaged.ViewObjects;
 
 namespace OutsideManaged.OutsideAccount
 {

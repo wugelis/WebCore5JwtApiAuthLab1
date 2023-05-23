@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,7 +41,6 @@
 
   <ItemGroup>
     <Folder Include="Attributes\" />
-    <Folder Include="Configuration\" />
     <Folder Include="Dto\" />
     <Folder Include="Middleware\" />
     <Folder Include="Models\" />
@@ -51,6 +51,7 @@
     <ProjectReference Include="..\EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj" />
     <ProjectReference Include="..\EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj" />
     <ProjectReference Include="..\EasyArchitect.OutsideManaged.JWTAuthMiddlewares\EasyArchitect.OutsideManaged.JWTAuthMiddlewares.csproj" />
+    <ProjectReference Include="..\OutsideManaged.OutsideAccount\OutsideManaged.OutsideAccount.csproj" />
   </ItemGroup>
 
 </Project>

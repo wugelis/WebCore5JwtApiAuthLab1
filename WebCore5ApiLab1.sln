@@ -22,13 +22,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideManage
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{5D769E16-C55E-40A5-8361-6CC0F49EB443}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.OutsideAccount", "OutsideManaged.OutsideAccount\OutsideManaged.OutsideAccount.csproj", "{D585899E-762D-4AC9-B3DE-889567493A7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutsideManaged.OutsideAccount", "OutsideManaged.OutsideAccount\OutsideManaged.OutsideAccount.csproj", "{D585899E-762D-4AC9-B3DE-889567493A7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{301075EA-1F6B-4EAF-801A-F5896ADEA7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.OutsideAccountTests", "OutsideManaged.OutsideAccountTests\OutsideManaged.OutsideAccountTests.csproj", "{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutsideManaged.OutsideAccountTests", "OutsideManaged.OutsideAccountTests\OutsideManaged.OutsideAccountTests.csproj", "{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{AAC0EEB7-2E8D-4B40-A1E1-557105ED548A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewObjects", "ViewObjects", "{F930146D-FC4A-4C79-9768-5E78E1C7C14A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.ViewObjects", "OutsideManaged.ViewObjects\OutsideManaged.ViewObjects.csproj", "{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.AuthExtensionsTests", "EasyArchitect.OutsideManaged.AuthExtensionsTests\EasyArchitect.OutsideManaged.AuthExtensionsTests.csproj", "{2D48099B-6D0F-44A9-A969-643786F73A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +70,14 @@ Global
 		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D48099B-6D0F-44A9-A969-643786F73A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D48099B-6D0F-44A9-A969-643786F73A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D48099B-6D0F-44A9-A969-643786F73A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D48099B-6D0F-44A9-A969-643786F73A57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +90,8 @@ Global
 		{0BB38ED6-9B0C-40B0-A0DD-1BA62F62C7F1} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 		{D585899E-762D-4AC9-B3DE-889567493A7A} = {5D769E16-C55E-40A5-8361-6CC0F49EB443}
 		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD} = {301075EA-1F6B-4EAF-801A-F5896ADEA7A1}
+		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A} = {F930146D-FC4A-4C79-9768-5E78E1C7C14A}
+		{2D48099B-6D0F-44A9-A969-643786F73A57} = {301075EA-1F6B-4EAF-801A-F5896ADEA7A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {671F45AD-8F89-481F-9C19-CC493D1D0DD2}

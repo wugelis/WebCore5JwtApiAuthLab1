@@ -8,12 +8,14 @@ using Microsoft.Extensions.Logging;
 using Mxic.FrameworkCore.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebCore5ApiLab1.Configuration;
 
 namespace WebCore5ApiLab1.Controllers
 {
     /// <summary>
     /// 外部人員 ApiController 程式碼範本
     /// </summary>
+    [ApiExplorerSettings(GroupName = nameof(ApiVersionInfo.V1))]
     public class OutsideAPIController : OutsideBaseApiController
     {
         private readonly IUriExtensions _uriExtensions;
@@ -49,8 +51,6 @@ namespace WebCore5ApiLab1.Controllers
                 }
             });
         }
-
-
     }
 
     /// <summary>

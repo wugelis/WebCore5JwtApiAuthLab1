@@ -14,12 +14,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Mxic.FrameworkCore.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using WebCore5ApiLab1.Configuration;
 
 namespace WebCore5ApiLab1
 {
@@ -55,13 +59,19 @@ namespace WebCore5ApiLab1
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(
-                    "v1", 
-                    new OpenApiInfo 
-                    { 
-                        Title = "WeatherForecast", 
-                        Version = "v1" 
+                foreach (FieldInfo field in typeof(ApiVersionInfo).GetFields())
+                {
+                    c.SwaggerDoc(
+                    field.Name,
+                    new OpenApiInfo
+                    {
+                        Title = $"Outside 外部人員權限模組 API 版本={field.Name} 描述 V1",
+                        Version = field.Name
                     });
+                }
+                
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
             // 註冊 AppSettings Configuration 類型，可在類別中注入 IOptions<AppSettings>
@@ -94,8 +104,14 @@ namespace WebCore5ApiLab1
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => 
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast v1")
+                app.UseSwaggerUI(c =>
+                {
+                    foreach (FieldInfo field in typeof(ApiVersionInfo).GetFields())
+                    {
+                        c.SwaggerEndpoint($"/swagger/{field.Name}/swagger.json", $"{field.Name}");
+                    }
+                }
+                    //c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast v1")
                 );
             }
 
