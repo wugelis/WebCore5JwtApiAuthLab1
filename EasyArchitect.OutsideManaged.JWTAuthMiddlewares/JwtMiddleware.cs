@@ -66,12 +66,15 @@ namespace EasyArchitect.OutsideManaged.JWTAuthMiddlewares
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 string userId = jwtToken.Claims.First(x => x.Type == "Username").Value;
+                decimal? Id = Convert.ToDecimal(jwtToken.Claims.First(x => x.Type == "Id").Value);
 
                 // 將原先用來產生 Claim 的欄位從 UserServices 裡撈出來，並塞入目前的工作階段身分物件裡
                 context.Items["User"] = userService.GetByUsername(userId);
                 //System.Security.Claims.ClaimsIdentity c = new System.Security.Claims.ClaimsIdentity(userId);
                 //System.Security.Claims.ClaimsPrincipal p = new System.Security.Claims.ClaimsPrincipal(jwtToken.);
                 userService.IdentityUser = userId;
+                // 紀錄下 DB 的 User Id
+                userService.IdentityId = Id;
             }
             catch
             {

@@ -19,5 +19,9 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
         /// 取得目前 Scoped 下的使用者
         /// </summary>
         string IdentityUser { get; set; }
+        /// <summary>
+        /// 取得目前 Scoped 下的使用者 ID
+        /// </summary>
+        decimal? IdentityId { get; set; }
     }
 }

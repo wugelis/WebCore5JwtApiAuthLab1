@@ -21,11 +21,16 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
         private readonly AppSettings _appSettings;
         private readonly ModelContext _context;
         private string _identityUser;
+        private decimal? _identityId;
 
         /// <summary>
         /// 取得目前 Scoped 下的使用者
         /// </summary>
         public string IdentityUser { get => _identityUser; set => _identityUser = value; }
+        /// <summary>
+        /// 取得目前 Scoped 下的使用者的 Id (流水號)
+        /// </summary>
+        public decimal? IdentityId { get => _identityId; set => _identityId = value; }
 
 #pragma warning disable CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
         /// <summary>
@@ -50,7 +55,6 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             _context = context;
         }
 
-
         /// <summary>
         /// 外部人員驗證方法
         /// </summary>
@@ -59,16 +63,34 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             //throw new SyntaxErrorException("ORA-00933:SQL命令未正确结束。");
+            User? user = null;
 
-            var user = _context
-                .Accountvos
-                .Where(x => x.Userid == model.Username && x.Password == model.Password)
-                .Select(u => new User() 
-                { 
-                    Id = 1,
-                    Username = u.Userid
-                })
-                .FirstOrDefault();
+            if(model.IsMXIC)
+            {
+                decimal? isAdmin = Convert.ToDecimal(!model.IsMXIC);
+
+                user = _context
+                    .Accountvos
+                    .Where(x => x.Userid == model.Username && x.Password == model.Password && x.ID == isAdmin)
+                    .Select(u => new User()
+                    {
+                        Id = (decimal)u.ID,
+                        Username = u.Userid
+                    })
+                    .FirstOrDefault();
+            }
+            else
+            {
+                user = _context
+                    .Accountvos
+                    .Where(x => x.Userid == model.Username && x.Password == model.Password && x.ID != 0)
+                    .Select(u => new User()
+                    {
+                        Id = (decimal)u.ID,
+                        Username = u.Userid
+                    })
+                    .FirstOrDefault();
+            }
 
             if (user == null)
             {
@@ -79,6 +101,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
 
             // 若目前登入的使用者存在於系統中，將目前 User 名稱記錄在 IdentityUser 屬性中（此屬性只在目前 Scoped Lifecycle 中有效）
             IdentityUser = model.Username;
+            IdentityId = user.Id;
 
             return new AuthenticateResponse(user, token); 
         }
@@ -125,7 +148,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("Username", user.Username) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("Username", user.Username), new Claim("Id", user.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddMinutes(_appSettings.TimeoutMinutes.HasValue ? _appSettings.TimeoutMinutes.Value : 30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

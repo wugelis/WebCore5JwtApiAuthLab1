@@ -20,7 +20,12 @@ namespace WebCore5ApiLab1.Controllers
     {
         private readonly IUriExtensions _uriExtensions;
         private readonly IUserService _userService;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="userService"></param>
+        /// <param name="uriExtensions"></param>
         public OutsideAPIController(
             ILogger<OutsideBaseApiController> logger, 
             IUserService userService,
@@ -50,6 +55,33 @@ namespace WebCore5ApiLab1.Controllers
                     Name = "Gelis Wu"
                 }
             });
+        }
+
+        /// <summary>
+        /// 取得 Current Identity Id
+        /// </summary>
+        /// <returns></returns>
+        [NeedAuthorize]
+        [APIName("GetIdentityId")]
+        [ApiLogException]
+        [ApiLogonInfoAttribute]
+        public async Task<decimal?> GetIdentityId()
+        {
+            return await Task.FromResult(_userService.IdentityId);
+        }
+
+        /// <summary>
+        /// 取得 Current Identity Id
+        /// </summary>
+        /// <returns></returns>
+        [NeedAuthorize]
+        [APIName("GetIdentityUser")]
+        [ApiLogException]
+        [ApiLogonInfoAttribute]
+        public async Task<string> GetIdentityUser()
+        {
+            //return await Task.FromResult(_userService.IdentityUser);
+            return _userService.IdentityUser;
         }
     }
 
