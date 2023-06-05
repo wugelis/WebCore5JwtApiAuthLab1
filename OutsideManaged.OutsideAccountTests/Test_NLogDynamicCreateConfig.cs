@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
+using NLog.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,33 @@ namespace OutsideManaged.OutsideAccountTests
         }
 
         [TestMethod]
+        public void Test_WriteExceptionLog_Physical()
+        {
+            // Arrange
+            string errMessage = "這是一個測試的錯誤訊息........";
+            DateTime _startTime;
+            long _startMilliSeconds;
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+
+            sw.Reset();
+            sw.Start();
+
+            _startTime = DateTime.Now;
+            _startMilliSeconds = sw.ElapsedMilliseconds;
+
+            string baseDirectory = AppContext.BaseDirectory;
+            var config = new NLog.Config.LoggingConfiguration();
+
+            Logger _logger = NLogBuilder.ConfigureNLog(Path.Combine(baseDirectory, "NLogOutSide.Config")).GetLogger("outsideError");
+
+            // Act
+            _logger.Error($" UnitTest [來源:file://{baseDirectory} 執行 {nameof(Test_NLogDynamicCreateConfig)} [錯誤訊息:{errMessage}]");
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void Test_WriteLogInfo()
         {
             // Arrange
@@ -84,8 +112,34 @@ namespace OutsideManaged.OutsideAccountTests
             config.AddRule(LogLevel.Debug, LogLevel.Debug, logconsole);
 
             // 套用 NLog configuration
-            NLog.LogManager.Configuration = config;
+            //NLog.LogManager.Configuration = config;
             Logger _logger = LogManager.GetCurrentClassLogger();
+
+            // Act
+            _logger.Info($" UnitTest [來源:file://{baseDirectory} 執行 {nameof(Test_NLogDynamicCreateConfig)} [開始時間:{_startTime.ToString("yyyy-MM-dd HH:mm:ss.fff")}] [結束時間:{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}] [花費時間:{sw.ElapsedMilliseconds - _startMilliSeconds}]");
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void Test_WriteLogInfo_Physical()
+        {
+            // Arrange
+            DateTime _startTime;
+            long _startMilliSeconds;
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+
+            sw.Reset();
+            sw.Start();
+
+            _startTime = DateTime.Now;
+            _startMilliSeconds = sw.ElapsedMilliseconds;
+
+            string baseDirectory = AppContext.BaseDirectory;
+            var config = new NLog.Config.LoggingConfiguration();
+
+            Logger _logger = NLogBuilder.ConfigureNLog(Path.Combine(baseDirectory, "NLogOutSide.Config")).GetLogger("outsideInfo");
 
             // Act
             _logger.Info($" UnitTest [來源:file://{baseDirectory} 執行 {nameof(Test_NLogDynamicCreateConfig)} [開始時間:{_startTime.ToString("yyyy-MM-dd HH:mm:ss.fff")}] [結束時間:{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}] [花費時間:{sw.ElapsedMilliseconds - _startMilliSeconds}]");

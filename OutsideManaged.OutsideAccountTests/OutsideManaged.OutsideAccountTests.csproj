@@ -20,6 +20,8 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
 	  <PackageReference Include="NLog" Version="4.7.13" />
 	  <PackageReference Include="NLog.Schema" Version="4.7.13" />
+	  <PackageReference Include="NLog.Config" Version="4.7.13" />
+	  <PackageReference Include="NLog.Web.AspNetCore" Version="4.7.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,9 @@
 
   <ItemGroup>
     <None Update="appSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="NLogOutSide.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

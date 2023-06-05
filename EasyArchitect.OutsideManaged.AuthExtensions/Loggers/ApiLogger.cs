@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Mxic.FrameworkCore.Core;
 using NLog;
+using NLog.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Loggers
 {
     public class ApiLogger
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static string _baseDirectory = AppContext.BaseDirectory;
+        private static LogFactory _logFactory = NLogBuilder.ConfigureNLog(Path.Combine(_baseDirectory, "NLogOutSide.Config")); //LogManager.GetCurrentClassLogger();
+        private static Logger _loggerInfo = _logFactory.GetLogger("outsideInfo");
+        private static Logger _loggerError = _logFactory.GetLogger("outsideError");
+
         private static IUserService _userService;
         private static IUriExtensions _uriExtensions;
 
@@ -39,7 +44,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Loggers
             long sw,
             string absoluteUri)
         {
-            _logger.Info(string.Format("\t{0}\t[來源：{7}]\t執行\t{2}.{3}\t[parame:{4}]\t[開始時間：{1}]\t[結束時間：{5}]\t[花費時間：{6}]",
+            _loggerInfo.Info(string.Format("\t{0}\t[來源：{7}]\t執行\t{2}.{3}\t[parame:{4}]\t[開始時間：{1}]\t[結束時間：{5}]\t[花費時間：{6}]",
                     userName,
                     startTime,
                     controllerName,
@@ -70,7 +75,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Loggers
             _userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
             _uriExtensions = context.HttpContext.RequestServices.GetRequiredService<IUriExtensions>();
 
-            _logger.Error(string.Format("\t[{0}]\t執行失敗\t{1}.{2}\t[parame:{3}]\t{4}\tStackTrace:{5}",
+            _loggerError.Error(string.Format("\t[{0}]\t執行失敗\t{1}.{2}\t[parame:{3}]\t{4}\tStackTrace:{5}",
                                 context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
                                 context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
                                 context.HttpContext.Request.Method,

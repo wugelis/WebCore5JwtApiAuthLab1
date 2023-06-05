@@ -80,8 +80,7 @@ namespace WebCore5ApiLab1.Controllers
         [ApiLogonInfoAttribute]
         public async Task<string> GetIdentityUser()
         {
-            //return await Task.FromResult(_userService.IdentityUser);
-            return _userService.IdentityUser;
+            return await Task.FromResult(_userService.IdentityUser);
         }
     }
 
