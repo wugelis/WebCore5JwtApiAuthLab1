@@ -34,7 +34,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Filters
                 var uriExts = context.HttpContext.RequestServices.GetRequiredService<IUriExtensions>();
 
                 ApiLogger.WriteErrorLog(
-                                context,
+                                context.HttpContext,
                                 context.HttpContext.Request.GetAbsoluteUri(uriExts),
                                 context.HttpContext.Request.GetAbsoluteUri(uriExts),
                                 context.HttpContext.Request.Method,

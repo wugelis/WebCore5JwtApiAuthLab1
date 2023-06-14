@@ -2,6 +2,7 @@
 using EasyArchitect.OutsideManaged.AuthExtensions.Filters;
 using EasyArchitect.OutsideManaged.AuthExtensions.Models;
 using EasyArchitect.OutsideManaged.AuthExtensions.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -19,12 +20,15 @@ namespace WebCore5ApiLab1.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public WeatherForecastController(
             ILogger<OutsideBaseApiController> logger, 
-            IUserService userService) 
-            : base(logger, userService)
+            IUserService userService,
+            IHttpContextAccessor httpContextAccessor) 
+            : base(logger, userService, httpContextAccessor)
         {
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>

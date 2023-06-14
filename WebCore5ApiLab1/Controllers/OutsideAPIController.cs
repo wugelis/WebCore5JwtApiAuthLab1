@@ -19,6 +19,7 @@ namespace WebCore5ApiLab1.Controllers
     public class OutsideAPIController : OutsideBaseApiController
     {
         private readonly IUriExtensions _uriExtensions;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserService _userService;
         /// <summary>
         /// 
@@ -26,14 +27,17 @@ namespace WebCore5ApiLab1.Controllers
         /// <param name="logger"></param>
         /// <param name="userService"></param>
         /// <param name="uriExtensions"></param>
+        /// <param name="httpContextAccessor"></param>
         public OutsideAPIController(
             ILogger<OutsideBaseApiController> logger, 
             IUserService userService,
-            IUriExtensions uriExtensions) 
-            : base(logger, userService)
+            IUriExtensions uriExtensions,
+            IHttpContextAccessor httpContextAccessor) 
+            : base(logger, userService, httpContextAccessor)
         {
             _userService = userService;
             _uriExtensions = uriExtensions;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -44,7 +48,7 @@ namespace WebCore5ApiLab1.Controllers
         [HttpGet]
         [APIName("GetPersons")]
         [ApiLogException]
-        [ApiLogonInfoAttribute]
+        [ApiLogonInfo]
         public async Task<IEnumerable<Person>> GetPersons()
         {
             return await Task.FromResult(new Person[] 
@@ -64,7 +68,7 @@ namespace WebCore5ApiLab1.Controllers
         [NeedAuthorize]
         [APIName("GetIdentityId")]
         [ApiLogException]
-        [ApiLogonInfoAttribute]
+        [ApiLogonInfo]
         public async Task<decimal?> GetIdentityId()
         {
             return await Task.FromResult(_userService.IdentityId);
@@ -77,7 +81,7 @@ namespace WebCore5ApiLab1.Controllers
         [NeedAuthorize]
         [APIName("GetIdentityUser")]
         [ApiLogException]
-        [ApiLogonInfoAttribute]
+        [ApiLogonInfo]
         public async Task<string> GetIdentityUser()
         {
             return await Task.FromResult(_userService.IdentityUser);

@@ -1,4 +1,5 @@
 ﻿using EasyArchitect.OutsideManaged.AuthExtensions.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Mxic.FrameworkCore.Core;
@@ -64,7 +65,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Loggers
         /// <param name="errorMeg"></param>
         /// <param name="stackTrace"></param>
         public static void WriteErrorLog(
-            FilterContext context,
+            HttpContext context,
             string absoluteUri,
             string absoluteUri2,
             string httpMethod,
@@ -72,37 +73,36 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Loggers
             string errorMeg,
             string? stackTrace)
         {
-            _userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-            _uriExtensions = context.HttpContext.RequestServices.GetRequiredService<IUriExtensions>();
+            //_userService = context.RequestServices.GetRequiredService<IUserService>();
+            //_uriExtensions = context.RequestServices.GetRequiredService<IUriExtensions>();
 
             _loggerError.Error(string.Format("\t[{0}]\t執行失敗\t{1}.{2}\t[parame:{3}]\t{4}\tStackTrace:{5}",
-                                context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
-                                context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
-                                context.HttpContext.Request.Method,
+                                absoluteUri,
+                                absoluteUri2,
+                                context.Request.Method,
                                 "",
                                 errorMeg,
                                 stackTrace));
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="httpContextAccessor"></param>
+        /// <param name="errMeg"></param>
+        public static void WriteErrorLog(HttpContext httpContextAccessor, string errMeg)
+        {
+            IUriExtensions uriExtensions = httpContextAccessor!.RequestServices.GetRequiredService<IUriExtensions>();
+            string absoluteUri = httpContextAccessor.Request.GetAbsoluteUri(uriExtensions);
 
-        //public static void WriteErrorLog(
-        //    FilterContext context,
-        //    string absoluteUri,
-        //    string absoluteUri2,
-        //    string httpMethod,
-        //    string parames,
-        //    string errorMeg,
-        //    string? stackTrace)
-        //{
-        //    _userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-        //    _uriExtensions = context.HttpContext.RequestServices.GetRequiredService<IUriExtensions>();
-
-        //    _logger.Error(string.Format("\t[{0}]\t執行失敗\t{1}.{2}\t[parame:{3}]\t{4}\tStackTrace:{5}",
-        //                        context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
-        //                        context.HttpContext.Request.GetAbsoluteUri(_uriExtensions),
-        //                        context.HttpContext.Request.Method,
-        //                        "",
-        //                        errorMeg,
-        //                        stackTrace));
-        //}
+            // 紀錄錯誤的 Error Log Message
+            WriteErrorLog(
+                httpContextAccessor,
+                absoluteUri,
+                absoluteUri,
+                httpContextAccessor.Request.Method,
+                httpContextAccessor.Request.Path,
+                errMeg,
+                "");
+        }
     }
 }

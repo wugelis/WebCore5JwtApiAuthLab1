@@ -7,20 +7,26 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using EasyArchitect.OutsideManaged.AuthExtensions.Crypto;
-using Mxic.FrameworkCore.Core;
+using MxicFrameworkCore = Mxic.FrameworkCore.Core;
 using EasyArchitect.OutsideManaged.AuthExtensions.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
+using Microsoft.Extensions.Configuration;
 
 namespace EasyArchitect.OutsideManaged.AuthExtensions.Services.Tests
 {
     [TestClass()]
     public class UserServiceTests
     {
+        /// <summary>
+        /// 測試 UserService.Authenticate() 驗證功能方法
+        /// </summary>
         [TestMethod()]
         public void Test_Authenticate()
         {
             // Arrange
             Mock<IUserService> target = new Mock<IUserService>();
-            string secert = ConfigurationManager.AppSettings["Secret"];
+            string secert = MxicFrameworkCore.ConfigurationManager.AppSettings["Secret"];
             string input = "test";
             string encrpto = Rijndael.EncryptString(input);
             string expectedToken = "AABB";
@@ -41,6 +47,36 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services.Tests
 
             // Assert
             Assert.AreEqual(expectedToken, actualToken);
+        }
+
+        [TestMethod]
+        public void Test_GetSequence()
+        {
+            // Arrange
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json");
+
+            Microsoft.Extensions.Configuration.IConfigurationRoot configuration = builder.Build();
+
+            var options = new DbContextOptionsBuilder<ModelContext>()
+                .UseOracle(configuration.GetConnectionString("OutsideDbContext"))
+                .Options;
+
+            ModelContext context = new ModelContext(options);
+            int actual;
+            int expected = 1;
+
+            // Act
+            DbCommand dbCmd = context.Database.GetDbConnection().CreateCommand();
+            dbCmd.CommandText = "SELECT ACCOUNTVO_SEQ.nextval from DUAL";
+            context.Database.OpenConnection();
+            DbDataReader reader = dbCmd.ExecuteReader();
+            reader.Read();
+            actual = reader.GetInt32(0);
+
+            // Assert
+            Assert.IsTrue(actual >= expected);
         }
     }
 }

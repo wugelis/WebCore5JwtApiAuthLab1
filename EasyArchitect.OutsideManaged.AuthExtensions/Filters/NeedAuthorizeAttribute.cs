@@ -31,7 +31,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Filters
                 var actionName = context.ActionDescriptor.DisplayName;
                 //var controllerName = context.HttpContext.Controller.GetType().FullName;
 
-                // 获取 Action 上应用的 Attribute
+                // 取得 Action 上面有使用的 Attributes
                 var endpointMetadata = context.ActionDescriptor.EndpointMetadata;
                 var hasApiLogException = endpointMetadata.Any(x => x.GetType() == typeof(ApiLogExceptionAttribute));
 
@@ -43,7 +43,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Filters
 
                     // 紀錄錯誤的 Error Log Message
                     ApiLogger.WriteErrorLog(
-                        context,
+                        context.HttpContext,
                         absoluteUri,
                         absoluteUri,
                         context.HttpContext.Request.Method,

@@ -57,6 +57,7 @@ x64/
 *.pidb
 *.log
 *.scc
+*.dll
 
 # OS generated files #
 .DS_Store*
@@ -107,6 +108,7 @@ DocProject/Help/html
 
 # Click-Once directory
 publish/
+Publish.Web/
 
 # Publish Web Output
 *.Publish.xml

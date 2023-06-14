@@ -41,6 +41,7 @@ namespace WebCore5ApiLab1
         {
             services.AddCors();
             services.AddControllers();
+            services.AddHttpContextAccessor();
             services.AddAuthentication(configure =>
             {
                 configure.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;

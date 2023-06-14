@@ -15,7 +15,7 @@ using WebCore5ApiLab1.Configuration;
 namespace WebCore5ApiLab1.Controllers
 {
     /// <summary>
-    /// 
+    /// 加入版控的 Api Ver2.
     /// </summary>
     [ApiExplorerSettings(GroupName = nameof(ApiVersionInfo.V2))]
     public class OutsideV2APIController : OutsideBaseApiController
@@ -23,6 +23,7 @@ namespace WebCore5ApiLab1.Controllers
         private readonly ILogger<OutsideBaseApiController> _logger;
         private readonly IUserService _userService;
         private readonly IUriExtensions _uriExtensions;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         /// <summary>
         /// 
@@ -30,15 +31,18 @@ namespace WebCore5ApiLab1.Controllers
         /// <param name="logger"></param>
         /// <param name="userService"></param>
         /// <param name="uriExtensions"></param>
+        /// <param name="httpContextAccessor"></param>
         public OutsideV2APIController(
             ILogger<OutsideBaseApiController> logger,
             IUserService userService,
-            IUriExtensions uriExtensions)
-            :base(logger, userService)
+            IUriExtensions uriExtensions, 
+            IHttpContextAccessor httpContextAccessor)
+            :base(logger, userService, httpContextAccessor)
         {
             _logger = logger;
             _userService = userService;
             _uriExtensions = uriExtensions;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -49,7 +53,7 @@ namespace WebCore5ApiLab1.Controllers
         [HttpGet]
         [APIName("GetOutsideAccountView")]
         [ApiLogException]
-        [ApiLogonInfoAttribute]
+        [ApiLogonInfo]
         public async Task<IEnumerable<OutsideAccountView>> GetOutsideAccountView()
         {
             return await Task.FromResult(new OutsideAccountView[]
