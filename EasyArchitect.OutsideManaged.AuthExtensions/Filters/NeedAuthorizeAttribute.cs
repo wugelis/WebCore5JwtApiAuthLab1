@@ -1,10 +1,10 @@
 ﻿using EasyArchitect.OutsideManaged.AuthExtensions.Loggers;
 using EasyArchitect.OutsideManaged.AuthExtensions.Models;
+using EasyArchitectCore.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Mxic.FrameworkCore.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

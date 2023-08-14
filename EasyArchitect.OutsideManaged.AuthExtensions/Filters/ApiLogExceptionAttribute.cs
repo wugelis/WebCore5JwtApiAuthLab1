@@ -1,7 +1,7 @@
 ﻿using EasyArchitect.OutsideManaged.AuthExtensions.Loggers;
+using EasyArchitectCore.Core;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Mxic.FrameworkCore.Core;
 using NLog;
 using System;
 using System.Collections.Generic;

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Authors>Gelis</Authors>
-	  <Version>6.0.1.1</Version>
+	  <Version>6.0.1.2</Version>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -23,7 +23,7 @@
 		</PackageReference>
 		<PackageReference Include="Oracle.EntityFrameworkCore" Version="6.21.5" />
 		<PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.50" />
-		<PackageReference Include="Mxic.FrameworkCore.Core" Version="6.0.0.0" />
+		<PackageReference Include="EasyArchitectCore.Core" Version="6.0.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

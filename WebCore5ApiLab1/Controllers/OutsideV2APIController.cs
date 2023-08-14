@@ -2,10 +2,10 @@
 using EasyArchitect.OutsideManaged.AuthExtensions.Attributes;
 using EasyArchitect.OutsideManaged.AuthExtensions.Filters;
 using EasyArchitect.OutsideManaged.AuthExtensions.Services;
+using EasyArchitectCore.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Mxic.FrameworkCore.Core;
 using OutsideManaged.ViewObjects;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;

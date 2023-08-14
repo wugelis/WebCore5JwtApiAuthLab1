@@ -40,7 +40,7 @@
 	  <PackageReference Include="NLog" Version="4.7.13" />
 	  <PackageReference Include="NLog.Config" Version="4.7.13" />
 	  <PackageReference Include="NLog.Schema" Version="4.7.13" />
-	  <PackageReference Include="Mxic.FrameworkCore.Core" Version="6.0.0.0" />
+	  
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using EasyArchitect.OutsideManaged.AuthExtensions.Services;
+using EasyArchitectCore.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Mxic.FrameworkCore.Core;
 using NLog;
 using NLog.Web;
 using System;

@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mxic.FrameworkCore.Core;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection.Metadata;
 using System.Reflection;
