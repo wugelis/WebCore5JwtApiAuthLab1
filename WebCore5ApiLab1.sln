@@ -32,9 +32,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{AAC0EEB7-2E8D-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewObjects", "ViewObjects", "{F930146D-FC4A-4C79-9768-5E78E1C7C14A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideManaged.ViewObjects", "OutsideManaged.ViewObjects\OutsideManaged.ViewObjects.csproj", "{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutsideManaged.ViewObjects", "OutsideManaged.ViewObjects\OutsideManaged.ViewObjects.csproj", "{6C133285-D467-4ECC-BAEE-B76AC66CEC4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideManaged.AuthExtensionsTests", "EasyArchitect.OutsideManaged.AuthExtensionsTests\EasyArchitect.OutsideManaged.AuthExtensionsTests.csproj", "{2D48099B-6D0F-44A9-A969-643786F73A57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyArchitect.OutsideManaged.AuthExtensionsTests", "EasyArchitect.OutsideManaged.AuthExtensionsTests\EasyArchitect.OutsideManaged.AuthExtensionsTests.csproj", "{2D48099B-6D0F-44A9-A969-643786F73A57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項目", "{792BDD9C-5C86-4960-98DD-A6B293DDE55B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
