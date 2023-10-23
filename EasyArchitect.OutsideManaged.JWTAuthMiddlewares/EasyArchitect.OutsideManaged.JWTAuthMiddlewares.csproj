@@ -7,6 +7,7 @@
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Authors>Gelis</Authors>
 	  <Version>6.0.0</Version>
+	  <Description>EasyArchitect 的 OAuth2 功能與提供 JWT 相關功能的 .NET 6 Middleware 相關組件</Description>
   </PropertyGroup>
 
   <ItemGroup>

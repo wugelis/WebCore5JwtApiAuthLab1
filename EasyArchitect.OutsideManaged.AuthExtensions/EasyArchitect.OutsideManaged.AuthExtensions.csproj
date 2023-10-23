@@ -6,7 +6,8 @@
     <Nullable>enable</Nullable>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Authors>Gelis</Authors>
-	  <Version>6.0.1.2</Version>
+	  <Version>6.0.2.2</Version>
+	  <Description>EasyArchitect 的 OAuth2 驗證功能與 JWT Token 相關組件</Description>
   </PropertyGroup>
 
 	<ItemGroup>

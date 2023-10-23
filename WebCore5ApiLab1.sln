@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項�
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitect.OutsideControllerBase", "EasyArchitect.OutsideControllerBase\EasyArchitect.OutsideControllerBase.csproj", "{E4A1C1AF-2E28-417F-9164-C07EBB897A3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{2D48099B-6D0F-44A9-A969-643786F73A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D48099B-6D0F-44A9-A969-643786F73A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D48099B-6D0F-44A9-A969-643786F73A57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A1C1AF-2E28-417F-9164-C07EBB897A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A1C1AF-2E28-417F-9164-C07EBB897A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A1C1AF-2E28-417F-9164-C07EBB897A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A1C1AF-2E28-417F-9164-C07EBB897A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{BA7D7EA3-F867-4654-83FF-0DB50FBECAAD} = {301075EA-1F6B-4EAF-801A-F5896ADEA7A1}
 		{6C133285-D467-4ECC-BAEE-B76AC66CEC4A} = {F930146D-FC4A-4C79-9768-5E78E1C7C14A}
 		{2D48099B-6D0F-44A9-A969-643786F73A57} = {301075EA-1F6B-4EAF-801A-F5896ADEA7A1}
+		{E4A1C1AF-2E28-417F-9164-C07EBB897A3F} = {5C3C2BAE-E34A-4866-A5E9-942107642C5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {671F45AD-8F89-481F-9C19-CC493D1D0DD2}

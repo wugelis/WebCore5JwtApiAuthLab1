@@ -49,12 +49,12 @@ namespace WebCore5ApiLab1.Controllers
         /// Get OutsideAccount 範例程式（需要驗證）
         /// </summary>
         /// <returns></returns>
-        [NeedAuthorize]
+        //[NeedAuthorize]
         [HttpGet]
         [APIName("GetOutsideAccountView")]
         [ApiLogException]
         [ApiLogonInfo]
-        public async Task<IEnumerable<OutsideAccountView>> GetOutsideAccountView()
+        public async Task<IEnumerable<OutsideAccountView>> GetOutsideAccountViewAsync()
         {
             return await Task.FromResult(new OutsideAccountView[]
             {
@@ -62,7 +62,22 @@ namespace WebCore5ApiLab1.Controllers
                 {
                     UserAccount = "Gelis",
                     Title = "軟體架構師",
-                    ContactName = "Gelis"
+                    Mobile = "0911222333",
+                    ContactName = "Tester"
+                },
+                new OutsideAccountView()
+                {
+                    UserAccount = "Andrew",
+                    Title = "架構師",
+                    Mobile = "0911222333",
+                    ContactName = "Tester"
+                },
+                new OutsideAccountView()
+                {
+                    UserAccount = "Edward",
+                    Title = "經理",
+                    Mobile = "0911222333",
+                    ContactName = "Tester"
                 }
             });
         }

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>6.0.0.0</Version>
+    <Authors>Gelis</Authors>
+    <Company>軟體開發之路</Company>
+    <Description>這是 EasyArchitect 框架 for .NET 6 中所提供一般 Controller 使用的 Base Controller 類別</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj" />
+  </ItemGroup>
+
+</Project>

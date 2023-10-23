@@ -40,14 +40,15 @@ namespace WebCore5ApiLab1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddControllers();
+            services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddAuthentication(configure =>
             {
                 configure.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                configure.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(options =>
             {
-                options.LoginPath = new PathString("/Account/Login");
+                //options.LoginPath = new PathString(EasyArchitectCore.Core.ConfigurationManager.AppSettings["LoginPage"]);
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
                 options.Cookie.HttpOnly = true;
                 options.Events = new CookieAuthenticationEvents()
@@ -58,6 +59,7 @@ namespace WebCore5ApiLab1
                     }
                 };
             });
+
             services.AddSwaggerGen(c =>
             {
                 foreach (FieldInfo field in typeof(ApiVersionInfo).GetFields())
@@ -70,7 +72,7 @@ namespace WebCore5ApiLab1
                         Version = field.Name
                     });
                 }
-                
+
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
@@ -112,11 +114,12 @@ namespace WebCore5ApiLab1
                         c.SwaggerEndpoint($"/swagger/{field.Name}/swagger.json", $"{field.Name}");
                     }
                 }
-                    //c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast v1")
+                //c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast v1")
                 );
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -126,15 +129,19 @@ namespace WebCore5ApiLab1
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            //app.UseMiddleware<JwtMiddleware>();
             app.UseAuthentication();
-            app.UseJwtAuthenticate();
-
             app.UseAuthorization();
+
+            app.UseJwtAuthenticate();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                 endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+               endpoints.MapControllers();
+
             });
         }
     }

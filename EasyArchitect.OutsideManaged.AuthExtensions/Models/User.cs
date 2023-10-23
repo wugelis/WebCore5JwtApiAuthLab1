@@ -19,5 +19,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Models
 
         [JsonIgnore]
         public string Password { get; set; }
+
+        public static string LOGIN_USER_INFO = "LOGIN_USER_INFO";
     }
 }

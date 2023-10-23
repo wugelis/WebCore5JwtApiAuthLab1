@@ -6,7 +6,8 @@
     <Nullable>enable</Nullable>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Authors>Gelis</Authors>
-	  <Version>6.0.1.1</Version>
+	  <Version>6.0.2.1</Version>
+	  <Description>EasyArchitect 的 ApiControllerBase 功能與 Uri 相關的 Extension 相關組件</Description>
   </PropertyGroup>
 
   <ItemGroup>

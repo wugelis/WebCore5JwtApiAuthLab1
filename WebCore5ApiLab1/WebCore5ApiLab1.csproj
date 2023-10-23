@@ -24,6 +24,8 @@
   <ItemGroup>
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
+
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
@@ -45,10 +47,13 @@
 
   <ItemGroup>
     <Folder Include="Attributes\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Data\" />
     <Folder Include="Dto\" />
     <Folder Include="Middleware\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +64,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyArchitect.OutsideApiControllerBase\EasyArchitect.OutsideApiControllerBase.csproj" />
+    <ProjectReference Include="..\EasyArchitect.OutsideControllerBase\EasyArchitect.OutsideControllerBase.csproj" />
     <ProjectReference Include="..\EasyArchitect.OutsideManaged.Configuration\EasyArchitect.OutsideManaged.Configuration.csproj" />
     <ProjectReference Include="..\EasyArchitect.OutsideManaged.JWTAuthMiddlewares\EasyArchitect.OutsideManaged.JWTAuthMiddlewares.csproj" />
     <ProjectReference Include="..\OutsideManaged.OutsideAccount\OutsideManaged.OutsideAccount.csproj" />
