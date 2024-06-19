@@ -18,7 +18,7 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Filters
     /// </summary>
     public class NeedAuthorizeAttribute : Attribute, IAuthorizationFilter
     {
-        private readonly string errorMessage = "未授權存取此資源 (Unauthorized).\r\n請確認您具備外部人員的帳號與權限。";
+        private readonly string errorMessage = "未授權存取此資源 (Unauthorized).\r\n請確認您具備存取此資源的帳號與權限。";
         /// <summary>
         /// 驗證過濾器
         /// </summary>

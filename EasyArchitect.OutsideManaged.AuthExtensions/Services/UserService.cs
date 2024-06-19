@@ -1,4 +1,5 @@
-﻿using EasyArchitect.OutsideManaged.AuthExtensions.Models;
+﻿using EasyArchitect.OutsideManaged.AuthExtensions.Crypto;
+using EasyArchitect.OutsideManaged.AuthExtensions.Models;
 using EasyArchitect.OutsideManaged.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -65,32 +66,32 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Services
             //throw new SyntaxErrorException("ORA-00933:SQL命令未正确结束。");
             User? user = null;
 
-            if(model.IsMXIC)
-            {
-                decimal? isAdmin = Convert.ToDecimal(!model.IsMXIC);
+            //if(model.IsMXIC)
+            //{
+            //    decimal? isAdmin = Convert.ToDecimal(!model.IsMXIC);
 
+            //    user = _context
+            //        .Accountvos
+            //        .Where(x => x.Userid == model.Username && Rijndael.EncryptString(x.Password) == model.Password && x.ID == isAdmin)
+            //        .Select(u => new User()
+            //        {
+            //            Id = (decimal)u.ID,
+            //            Username = u.Userid
+            //        })
+            //        .FirstOrDefault();
+            //}
+            //else
+            //{
                 user = _context
                     .Accountvos
-                    .Where(x => x.Userid == model.Username && x.Password == model.Password && x.ID == isAdmin)
+                    .Where(x => x.Userid == model.Username && x.Password! == model.Password && x.ID != 0)
                     .Select(u => new User()
                     {
                         Id = (decimal)u.ID,
                         Username = u.Userid
                     })
                     .FirstOrDefault();
-            }
-            else
-            {
-                user = _context
-                    .Accountvos
-                    .Where(x => x.Userid == model.Username && x.Password == model.Password && x.ID != 0)
-                    .Select(u => new User()
-                    {
-                        Id = (decimal)u.ID,
-                        Username = u.Userid
-                    })
-                    .FirstOrDefault();
-            }
+            //}
 
             if (user == null)
             {

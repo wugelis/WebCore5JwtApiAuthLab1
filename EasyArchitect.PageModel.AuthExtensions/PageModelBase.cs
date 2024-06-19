@@ -75,7 +75,7 @@ namespace EasyArchitect.PageModel.AuthExtensions
 
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(UserInfo.LOGIN_USER_INFO);
 
-            Response.Redirect("/Login");
+            Response.Redirect(_configuration.GetSection("AppSettings").GetValue<string>("LoginPage"));
         }
     }
 }

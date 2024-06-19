@@ -14,9 +14,9 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Models
         [Required]
         public string Password { get; set; }
         /// <summary>
-        /// 是否為 MXIC 的管理人員
+        /// 是否為 Admin 的管理人員
         /// </summary>
         [Required]
-        public bool IsMXIC { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

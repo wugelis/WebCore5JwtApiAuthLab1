@@ -49,7 +49,7 @@ namespace WebCore5ApiLab1.Controllers
         /// Get OutsideAccount 範例程式（需要驗證）
         /// </summary>
         /// <returns></returns>
-        //[NeedAuthorize]
+        [NeedAuthorize]
         [HttpGet]
         [APIName("GetOutsideAccountView")]
         [ApiLogException]

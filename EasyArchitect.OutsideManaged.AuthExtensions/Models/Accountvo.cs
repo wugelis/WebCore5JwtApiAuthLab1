@@ -10,6 +10,6 @@ namespace EasyArchitect.OutsideManaged.AuthExtensions.Models
         /// <summary>
         /// 流水號（識別用）
         /// </summary>
-        public decimal? ID { get; set; }
+        public int? ID { get; set; }
     }
 }

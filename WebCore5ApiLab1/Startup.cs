@@ -84,7 +84,8 @@ namespace WebCore5ApiLab1
 
             services.AddDbContext<ModelContext>(options =>
             {
-                options.UseOracle(Configuration.GetConnectionString("OutsideDbContext"), oraOptions => oraOptions.UseOracleSQLCompatibility("11"));
+                options.UseSqlServer(Configuration.GetConnectionString("OutsideDbContext"));
+                //options.UseOracle(Configuration.GetConnectionString("OutsideDbContext"), oraOptions => oraOptions.UseOracleSQLCompatibility("11"));
             });
 
             services.AddScoped<ModelContext>();
